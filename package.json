@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ngh --branch=deploy"
+    "deploy": "npm run build-prod && ngh --branch=master && rm -rf dist"
   },
   "private": true,
   "dependencies": {
