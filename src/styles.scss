@@ -1,6 +1,8 @@
 html, body, app-root { 
-    height: 100%; 
     width: 100%;
+    min-height: 100vh;
+    height: auto;
+    margin: 0;
     font-size: 22px;
 
     @media screen and (max-width: 700px) {

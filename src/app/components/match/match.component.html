@@ -10,10 +10,10 @@
             <div *ngFor="let f of level.from"
               draggable="true" 
               (dragstart)="dragstart_handler($event)"
-              class="row justify-content-center">
+              class="row justify-content-center row-img">
 
               <img [id]="f.id" 
-                [ngStyle]="{'width': 80/level.from.length + '%'}" 
+                [ngStyle]="{'width': IMG_SIZE/level.from.length + 'vmin', 'height': IMG_SIZE/level.from.length + 'vmin'}" 
                 src="./assets/images/levels/{{f.image}}"
               />
             </div>
@@ -24,10 +24,10 @@
             <div *ngFor="let t of level.to" 
               (drop)="drop($event)" 
               (dragover)="dragover($event)"
-              class="row justify-content-center">
+              class="row justify-content-center row-img">
 
               <img [id]="t.id" 
-                   [ngStyle]="{'width': 80/level.from.length + '%'}" 
+                   [ngStyle]="{'width': IMG_SIZE/level.from.length + 'vmin', 'height': IMG_SIZE/level.from.length + 'vmin'}"  
                    src="./assets/images/levels/{{t.image}}"
               />
             </div>

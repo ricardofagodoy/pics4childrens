@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { trigger, state, style, animate, transition, keyframes } from '@angular/animations';
 import { GameService } from 'src/app/services/game.service';
 import { map } from 'rxjs/operators';
 
@@ -7,9 +8,22 @@ import { map } from 'rxjs/operators';
   selector: 'app-match',
   templateUrl: './match.component.html',
   styleUrls: ['./match.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  /*animations: [
+    trigger('correctEffect', [
+      transition('* => on', [
+        animate('2s', keyframes([
+          style({ backgroundColor: 'rgba(0, 255, 0, 0)' }),
+          style({ backgroundColor: 'rgba(0, 255, 0, 1)' }),
+          style({ backgroundColor: 'rgba(0, 255, 0, 0)' })
+        ]))
+      ])
+    ])
+  ]*/
 })
 export class MatchComponent implements OnInit {
+
+  IMG_SIZE : number = 45
 
   level : any
   correct : number
@@ -43,6 +57,8 @@ export class MatchComponent implements OnInit {
     // Got match right
     if (event.target.id == from_id) {
       document.getElementById(from_id).style.display = 'none'
+
+      event.target.classList.add('correctAnimation')
 
       // Level finished
       if (++this.correct >= this.level.from.length)
