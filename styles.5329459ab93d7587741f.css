@@ -1,4 +1,4 @@
-app-root,body,html{height:100%;width:100%;font-size:22px}@media screen and (max-width:700px){app-root,body,html{font-size:10px}}@media screen and (max-width:1100px){app-root,body,html{font-size:14px}}@font-face{font-family:custom-font;src:url("orange juice 2.0.a11484965446fd4c1e99.ttf")}
+app-root,body,html{width:100%;min-height:100vh;height:auto;margin:0;font-size:22px}@media screen and (max-width:700px){app-root,body,html{font-size:10px}}@media screen and (max-width:1100px){app-root,body,html{font-size:14px}}@font-face{font-family:custom-font;src:url("orange juice 2.0.a11484965446fd4c1e99.ttf")}
 /*!
  * Bootstrap v4.4.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
