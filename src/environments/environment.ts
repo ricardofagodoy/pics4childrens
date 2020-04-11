@@ -1,16 +1,62 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
-
 export const environment = {
-  production: false
-};
 
-/*
- * For easier debugging in development mode, you can import the following file
- * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
- *
- * This import should be commented out in production mode because it will have a negative impact
- * on performance if an error is thrown.
- */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+  production: false,
+
+  levels: [
+    // 1
+    {
+      id: 1,
+      type: 'match',
+      from: [{id: 1, image: 'img1.png'}],
+      to: [{id: 1, image: 'img1.png'}]
+    },
+
+    // 2
+    {
+      id: 2,
+      type: 'match',
+      from: [
+        {id: 1, image: 'img1.png'},
+        {id: 2, image: 'img2.png'}
+      ],
+      to: [
+        {id: 2, image: 'img2.png'},
+        {id: 1, image: 'img1.png'}
+      ]
+    },
+
+    // 3
+    {
+      id: 3,
+      type: 'match',
+      from: [
+        {id: 1, image: 'img1.png'},
+        {id: 2, image: 'img2.png'},
+        {id: 3, image: 'img3.png'}
+      ],
+      to: [
+        {id: 2, image: 'img2.png'},
+        {id: 3, image: 'img3.png'},
+        {id: 1, image: 'img1.png'}
+      ]
+    },
+
+    // 4
+    {
+      id: 4,
+      type: 'match',
+      from: [
+        {id: 1, image: 'img1.png'},
+        {id: 2, image: 'img2.png'},
+        {id: 3, image: 'img3.png'},
+        {id: 4, image: 'img4.png'}
+      ],
+      to: [
+        {id: 4, image: 'img4.png'},
+        {id: 3, image: 'img3.png'},
+        {id: 2, image: 'img2.png'},
+        {id: 1, image: 'img1.png'}
+      ]
+    }
+  ]
+}

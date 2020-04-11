@@ -1,0 +1,23 @@
+<div id="board">
+
+    <p id="title">Pics 4 Childrens</p>
+
+        <div class="row justify-content-center">
+            <div class="col-4 name-label">
+                <p>Digite o nome:</p>
+            </div>
+
+            <div class="col-5">
+                <input [(ngModel)]="name" class="w-100 name-text" placeholder="Ex. Roberto"/>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center p-3">
+            <button (click)="start()" 
+                    [hidden]="name.length < 3"
+                    type="button" 
+                    class="btn w-50 start-button btn-success">
+                Iniciar atividades
+            </button>
+        </div>
+</div>

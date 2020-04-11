@@ -1,0 +1,43 @@
+<div *ngIf="level">
+
+    <p id="title">Coloque com o igual:</p>
+
+     <div class="container-fluid">
+        <div class="row">
+
+          <!-- From -->
+          <div class="col text-center left">
+            <div *ngFor="let f of level.from"
+              draggable="true" 
+              (dragstart)="dragstart_handler($event)"
+              class="row justify-content-center">
+
+              <img [id]="f.id" 
+                [ngStyle]="{'width': 80/level.from.length + '%'}" 
+                src="./assets/images/levels/{{f.image}}"
+              />
+            </div>
+          </div>
+
+          <!-- To -->
+          <div class="col text-center right">
+            <div *ngFor="let t of level.to" 
+              (drop)="drop($event)" 
+              (dragover)="dragover($event)"
+              class="row justify-content-center">
+
+              <img [id]="t.id" 
+                   [ngStyle]="{'width': 80/level.from.length + '%'}" 
+                   src="./assets/images/levels/{{t.image}}"
+              />
+            </div>
+          </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div *ngIf="!level">
+  <p id="title">Level não encontrado!</p>
+</div>

@@ -1,24 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LevelsComponent } from './levels/levels.component';
+import { MatchComponent } from './components/match/match.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HomeComponent } from './home/home.component';
-import { ScoreComponent } from './score/score.component';
+import { HomeComponent } from './components/home/home.component';
+import { ScoreComponent } from './components/score/score.component';
+
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LevelsComponent,
+    MatchComponent,
     HomeComponent,
     ScoreComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

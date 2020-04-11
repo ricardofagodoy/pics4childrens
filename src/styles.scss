@@ -1,9 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
-
-html, body { 
+html, body, app-root { 
     height: 100%; 
+    width: 100%;
+    font-size: 22px;
+
+    @media screen and (max-width: 700px) {
+        font-size: 10px;
+    }
+
+    @media screen and (max-width: 1100px) {
+      font-size: 14px;
+  }
 }
 
-body { 
-    margin: 0; 
+@font-face {
+    font-family: custom-font;
+    src: url("assets/fonts/orange\ juice\ 2.0.ttf");
 }
