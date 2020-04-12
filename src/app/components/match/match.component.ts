@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, ViewChildren, QueryList, AfterViewInit, NgZone } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GameService } from 'src/app/services/game.service';
 import { map } from 'rxjs/operators';
@@ -11,12 +11,10 @@ import { map } from 'rxjs/operators';
 })
 export class MatchComponent implements OnInit {
 
-  IMG_SIZE : number = 45
-
   level : any
   correct : number
 
-  constructor(private route: ActivatedRoute, private ngZone : NgZone, private router: Router, private service : GameService) {}
+  constructor(private route: ActivatedRoute, private router: Router, private service : GameService) {}
 
   ngOnInit() {
     this.route.paramMap.pipe(
@@ -39,7 +37,7 @@ export class MatchComponent implements OnInit {
     const $ = window['$']
 
     // Sets all droppable events
-    $(event.srcElement).each((index, element) =>
+    $(event.srcElement).each((_, element) =>
       $(element).droppable({ 
         accept: '#' + element.id,
         drop: this.drop.bind(this)
@@ -58,8 +56,6 @@ export class MatchComponent implements OnInit {
 
     // Level finished
     if (++this.correct >= this.level.from.length)
-      this.ngZone.run(() => {
-        this.router.navigate(this.service.get_next_level())
-      })
+      this.router.navigate(this.service.get_next_level())
   }
 }

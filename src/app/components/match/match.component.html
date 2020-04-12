@@ -1,31 +1,27 @@
 <div *ngIf="level">
 
-    <p id="title">Coloque com o igual:</p>
+    <div id="title-container" class="container-fluid">
+      <span id="title">Coloque com o igual:</span>
+    </div>  
 
-     <div class="container-fluid">
+     <div id="game-container" class="container-fluid">
         <div class="row">
 
           <!-- From -->
           <div class="col text-center left">
-            <div #fromList *ngFor="let f of level.from; let last = last"
-              class="row justify-content-center">
-
+            <div *ngFor="let f of level.from">
               <img [id]="f.id" 
                 class="draggable"
-                [ngStyle]="{'width': IMG_SIZE/level.from.length + 'vmin', 'height': IMG_SIZE/level.from.length + 'vmin'}" 
                 src="./assets/images/levels/{{f.image}}" 
                 (load)="attach_drag_events($event)" />
             </div>
           </div>
 
           <!-- To -->
-          <div class="col text-center right">
-            <div *ngFor="let t of level.to" 
-              class="row justify-content-center">
-
+          <div class="col text-center">
+            <div *ngFor="let t of level.to">
               <img [id]="t.id" 
                     class="droppable"
-                   [ngStyle]="{'width': IMG_SIZE/level.from.length + 'vmin', 'height': IMG_SIZE/level.from.length + 'vmin'}"  
                    src="./assets/images/levels/{{t.image}}"
                    (load)="attach_drop_events($event)" />
             </div>

@@ -5,13 +5,17 @@ html, body, app-root {
     margin: 0;
     font-size: 22px;
 
-    @media screen and (max-width: 700px) {
+    @media (max-width: 1100px) {
+      font-size: 14px;
+    }
+
+    @media (max-width: 700px) {
         font-size: 10px;
     }
 
-    @media screen and (max-width: 1100px) {
-      font-size: 14px;
-  }
+    @media (max-width: 400px) {
+        font-size: 7px;
+    }
 }
 
 @font-face {
