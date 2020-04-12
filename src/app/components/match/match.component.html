@@ -7,29 +7,27 @@
 
           <!-- From -->
           <div class="col text-center left">
-            <div *ngFor="let f of level.from"
-              draggable="true" 
-              (dragstart)="dragstart_handler($event)"
-              class="row justify-content-center row-img">
+            <div #fromList *ngFor="let f of level.from; let last = last"
+              class="row justify-content-center">
 
               <img [id]="f.id" 
+                class="draggable"
                 [ngStyle]="{'width': IMG_SIZE/level.from.length + 'vmin', 'height': IMG_SIZE/level.from.length + 'vmin'}" 
-                src="./assets/images/levels/{{f.image}}"
-              />
+                src="./assets/images/levels/{{f.image}}" 
+                (load)="attach_drag_events($event)" />
             </div>
           </div>
 
           <!-- To -->
           <div class="col text-center right">
             <div *ngFor="let t of level.to" 
-              (drop)="drop($event)" 
-              (dragover)="dragover($event)"
-              class="row justify-content-center row-img">
+              class="row justify-content-center">
 
               <img [id]="t.id" 
+                    class="droppable"
                    [ngStyle]="{'width': IMG_SIZE/level.from.length + 'vmin', 'height': IMG_SIZE/level.from.length + 'vmin'}"  
                    src="./assets/images/levels/{{t.image}}"
-              />
+                   (load)="attach_drop_events($event)" />
             </div>
           </div>
 

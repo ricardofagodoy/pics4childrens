@@ -16,8 +16,12 @@ img {
     border: 4px solid #000;
 }
 
-.row-img {
+.draggable, .droppable {
     margin-bottom: 3%;
+}
+
+.draggable {
+    z-index: 1000;
 }
 
 .correctAnimation {
@@ -32,7 +36,7 @@ img {
     }
   
     to {
-        background-color: rgba(0, 255, 0, 0.2);
+        background-color: rgba(0, 255, 0, 0.3);
     }
   }
 

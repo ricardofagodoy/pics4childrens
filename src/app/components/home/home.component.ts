@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { GameService } from 'src/app/services/game.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,11 +12,11 @@ export class HomeComponent implements OnInit {
 
   name : string = ''
 
-  constructor(private service : GameService) {}
+  constructor(private service : GameService, private router : Router) {}
 
   ngOnInit(): void {}
 
   start() {
-    this.service.start(this.name)
+    this.router.navigate(this.service.start(this.name))
   }
 }
