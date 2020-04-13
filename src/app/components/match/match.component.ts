@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GameService } from 'src/app/services/game.service';
 import { map } from 'rxjs/operators';
@@ -6,8 +6,7 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-match',
   templateUrl: './match.component.html',
-  styleUrls: ['./match.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  styleUrls: ['./match.component.scss']
 })
 export class MatchComponent implements OnInit {
 
@@ -24,11 +23,18 @@ export class MatchComponent implements OnInit {
 
   attach_drag_events(event) {
 
-    // Ugly as hell but needed for it to work on mobile
     const $ = window['$']
 
     // Sets all draggable events
-    $(event.srcElement).draggable({revert: "invalid"})
+    $(event.srcElement).draggable({
+      revert: "invalid",
+      start: function() {
+        $(this).css('z-index', 100)
+      },
+      stop: function() {
+        $(this).css('z-index', 0)
+      }
+    })
   }
 
   attach_drop_events(event) {
@@ -51,11 +57,13 @@ export class MatchComponent implements OnInit {
 
   drop(event) {
 
-    event.srcElement.style.display = 'none'
+    event.srcElement.style.visibility = 'hidden'
     event.target.classList.add('correctAnimation')
 
     // Level finished
     if (++this.correct >= this.level.from.length)
-      this.router.navigate(this.service.get_next_level())
+      setTimeout(() => {
+        this.router.navigate(this.service.get_next_level())
+      }, 1500)
   }
 }

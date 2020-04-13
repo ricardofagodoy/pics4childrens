@@ -1,5 +1,8 @@
-body {
-    background-image: none;
+:host {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #FFF;
 }
 
 #title-container {
@@ -22,14 +25,7 @@ img {
     border: 4px solid #000;
     background-color: #fff;
     width: 35vw;
-}
-
-.draggable, .droppable {
     margin-bottom: 3%;
-}
-
-.draggable {
-    z-index: 1000;
 }
 
 .correctAnimation {

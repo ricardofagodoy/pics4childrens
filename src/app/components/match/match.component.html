@@ -1,4 +1,8 @@
+<!-- Actual level -->
 <div *ngIf="level">
+
+    <!-- Initial modal -->
+    <!-- TODO -->
 
     <div id="title-container" class="container-fluid">
       <span id="title">Coloque com o igual:</span>
@@ -11,7 +15,6 @@
           <div class="col text-center left">
             <div *ngFor="let f of level.from">
               <img [id]="f.id" 
-                class="draggable"
                 src="./assets/images/levels/{{f.image}}" 
                 (load)="attach_drag_events($event)" />
             </div>
@@ -21,7 +24,6 @@
           <div class="col text-center">
             <div *ngFor="let t of level.to">
               <img [id]="t.id" 
-                    class="droppable"
                    src="./assets/images/levels/{{t.image}}"
                    (load)="attach_drop_events($event)" />
             </div>
@@ -32,6 +34,7 @@
 
 </div>
 
+<!-- Invalid level -->
 <div *ngIf="!level">
   <p id="title">Level não encontrado!</p>
 </div>
