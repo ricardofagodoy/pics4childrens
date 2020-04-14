@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GameService } from 'src/app/services/game.service';
 import { map } from 'rxjs/operators';
@@ -12,13 +12,34 @@ export class MatchComponent implements OnInit {
 
   level : any
   correct : number
+  number_of_images_loaded : number
+  ready : boolean
 
-  constructor(private route: ActivatedRoute, private router: Router, private service : GameService) {}
+  constructor(private ngZone : NgZone, private route: ActivatedRoute, private router: Router, private service : GameService) {}
 
   ngOnInit() {
     this.route.paramMap.pipe(
       map(params => params.get('id'))
     ).subscribe(this.load_level.bind(this))
+  }
+
+  start() {
+
+    // Not ready yet
+    if (this.number_of_images_loaded < this.level.from.length)
+      return
+
+    this.ready = true
+
+    // Unlocks overflow now that's playable
+    window['$']('app-match').css('overflow', 'auto')
+  }
+
+  load_level(id : string) {
+    this.correct = 0
+    this.ready = false
+    this.number_of_images_loaded = 0
+    this.level = this.service.get_level_data(+id)
   }
 
   attach_drag_events(event) {
@@ -35,6 +56,9 @@ export class MatchComponent implements OnInit {
         $(this).css('z-index', 0)
       }
     })
+
+    // Image loaded!
+    this.number_of_images_loaded++
   }
 
   attach_drop_events(event) {
@@ -50,11 +74,6 @@ export class MatchComponent implements OnInit {
       }))
   }
 
-  load_level(id : string) {
-    this.correct = 0
-    this.level = this.service.get_level_data(+id)
-  }
-
   drop(event) {
 
     event.srcElement.style.visibility = 'hidden'
@@ -62,8 +81,10 @@ export class MatchComponent implements OnInit {
 
     // Level finished
     if (++this.correct >= this.level.from.length)
-      setTimeout(() => {
-        this.router.navigate(this.service.get_next_level())
-      }, 1500)
+      this.ngZone.run(() => {
+        setTimeout(() => {
+          this.router.navigate(this.service.get_next_level())
+        }, 1500)
+      })
   }
 }

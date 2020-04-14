@@ -1,36 +1,39 @@
 <!-- Actual level -->
 <div *ngIf="level">
 
-    <!-- Initial modal -->
-    <!-- TODO -->
-
     <div id="title-container" class="container-fluid">
       <span id="title">Coloque com o igual:</span>
     </div>  
 
-     <div id="game-container" class="container-fluid">
-        <div class="row">
+    <div id="game-container" class="container-fluid">
+      <div class="row">
 
-          <!-- From -->
-          <div class="col text-center left">
-            <div *ngFor="let f of level.from">
-              <img [id]="f.id" 
-                src="./assets/images/levels/{{f.image}}" 
-                (load)="attach_drag_events($event)" />
-            </div>
+        <!-- From -->
+        <div class="col text-center left">
+          <div *ngFor="let f of level.from">
+            <img [id]="f.id" 
+              src="./assets/images/levels/{{f.image}}" 
+              (load)="attach_drag_events($event)" />
           </div>
-
-          <!-- To -->
-          <div class="col text-center">
-            <div *ngFor="let t of level.to">
-              <img [id]="t.id" 
-                   src="./assets/images/levels/{{t.image}}"
-                   (load)="attach_drop_events($event)" />
-            </div>
-          </div>
-
         </div>
+
+        <!-- To -->
+        <div class="col text-center">
+          <div *ngFor="let t of level.to">
+            <img [id]="t.id" 
+                  src="./assets/images/levels/{{t.image}}"
+                  (load)="attach_drop_events($event)" />
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <!-- Initial modal -->
+  <div id="initial-modal" *ngIf="!ready">
+    <div id="modal-box">
+      <img src="./assets/images/levels/start-btn.png" (click)="start()"/>
     </div>
+  </div>
 
 </div>
 
